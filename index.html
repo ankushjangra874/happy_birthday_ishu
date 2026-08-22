@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <canvas id="bgCanvas"></canvas>
+    <canvas id="wishCanvas"></canvas>
+    <audio id="bgMusic" src="bg-music.mp3" loop preload="auto"></audio>
+
+    <div class="top-controls">
+        <button id="musicToggle" class="icon-btn" title="Toggle Music">
+            <span class="music-icon">🎵</span>
+            <span class="music-waves"><span></span><span></span><span></span></span>
+        </button>
+    </div>
+
+    <main class="app-container">
+
+        <!-- ══════════════ SLIDE 1: Welcome ══════════════ -->
+        <section id="slide-1" class="slide active">
+            <div class="glass-card slide-1-card">
+                <div class="slide-content">
+                    <div class="dreamy-photo-wrapper">
+                        <img src="/photo1.jpg" alt="My Littlepie" class="dreamy-photo polaroid-frame float-anim">
+                        <span class="photo-heart-badge heart-pulse">💖</span>
+                    </div>
+                    <h1 class="romantic-title">"hello my littlepie<br>this is for you"</h1>
+                    <p class="subtitle">A small space made with all my love, just for you...</p>
+                    <div class="btn-wrapper">
+                        <button id="btn-slide-1" class="glow-btn">
+                            <span>come to take your surprise</span>
+                            <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ SLIDE 2: Thank You ══════════════ -->
+        <section id="slide-2" class="slide">
+            <div class="glass-card">
+                <div class="slide-content">
+                    <div class="dreamy-photo-wrapper">
+                        <img src="/photo2.jpg" alt="Us Together" class="dreamy-photo heart-frame float-anim">
+                        <div class="photo-sparkle-badge">✨</div>
+                    </div>
+                    <p class="romantic-quote">
+                        "i am thankfull to have you in my life maybe we fought alot we misunderstood each other but i m with you in every time i didnt know how to show love but for me you are the one whom i wished in my prayers"
+                    </p>
+                    <div class="btn-wrapper">
+                        <button id="btn-slide-2" class="glow-btn">
+                            <span>Continue</span>
+                            <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ SLIDE 3: Mic / Voice ══════════════ -->
+        <section id="slide-3" class="slide">
+            <div class="glass-card">
+                <div class="slide-content">
+                    <div class="dreamy-photo-wrapper compact-photo">
+                        <img src="/photo3.jpg" alt="Your Beautiful Smile" class="dreamy-photo oval-frame float-anim">
+                    </div>
+                    <h2 class="romantic-title">"want to know how i wish you on your birthday"</h2>
+                    <p class="voice-instruction">Say <strong class="highlight-text">"I love you"</strong> to unlock your special letter ❤️</p>
+                    <div class="mic-container">
+                        <div class="mic-ring ring-1"></div>
+                        <div class="mic-ring ring-2"></div>
+                        <div class="mic-ring ring-3"></div>
+                        <button id="micBtn" class="mic-btn" title="Tap to Speak">
+                            <svg class="mic-icon" viewBox="0 0 24 24">
+                                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="voiceStatus" class="voice-status">Tap the microphone to speak...</div>
+                    <div class="fallback-wrapper">
+                        <button id="fallbackBtn" class="text-btn">Or click here to say I love you ❤️</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ SLIDE 4: Love Letter ══════════════ -->
+        <section id="slide-4" class="slide cinema-slide">
+            <div class="glass-card romantic-letter-card">
+                <div class="cinema-header">
+                    <span class="cinema-badge">📜 A Letter From My Heart</span>
+                    <span id="lineCounter" class="line-counter">1 / 16</span>
+                </div>
+                <div class="letter-display-container">
+                    <div class="letter-photo-badge">
+                        <img id="letterPhoto" src="/photo4.jpg" alt="Memory" class="dreamy-photo line-photo">
+                    </div>
+                    <div class="letter-display-area">
+                        <p id="currentLetterLine" class="active-romantic-line">
+                            Happy Birthday, my love, my bebuu, my baby girl! ❤️🥺
+                        </p>
+                    </div>
+                </div>
+                <div class="letter-nav-controls">
+                    <button id="prevLineBtn" class="glow-btn nav-mini-btn">⏮️ Prev</button>
+                    <button id="pauseCreditsBtn" class="glow-btn nav-mini-btn">⏸️ Pause</button>
+                    <button id="nextLineBtn" class="glow-btn nav-mini-btn">Next ❤️ ⏭️</button>
+                </div>
+                <div id="letterFinishWrapper" class="btn-wrapper mt-20 hidden">
+                    <button id="btn-slide-4" class="glow-btn finish-btn">
+                        <span>Our Memories 🎬✨</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ SLIDE 5 (NEW): Video Memory Reel ══════════════ -->
+        <section id="slide-5" class="slide video-reel-slide">
+
+            <!-- Flash transition overlay -->
+            <div id="videoFlash" class="video-flash"></div>
+
+            <!-- Romantic Intro Screen (shown before first video starts) -->
+            <div id="videoIntro" class="video-intro">
+                <div class="video-intro-inner">
+                    <div class="film-strip-deco top"></div>
+                    <p class="intro-emoji">🎞️</p>
+                    <h2 class="intro-title">Our Moments</h2>
+                    <p class="intro-sub">every memory, every smile, every second with you...</p>
+                    <div class="film-strip-deco bottom"></div>
+                </div>
+            </div>
+
+            <!-- Video Player -->
+            <div id="videoPlayerWrap" class="video-player-wrap hidden">
+                <video id="memoryVideo" class="memory-video" playsinline webkit-playsinline></video>
+
+                <!-- Cinematic bars -->
+                <div class="cinema-bar top-bar"></div>
+                <div class="cinema-bar bot-bar"></div>
+
+                <!-- Floating caption -->
+                <div id="videoCaption" class="video-caption"></div>
+
+                <!-- Progress dots -->
+                <div class="video-progress-dots">
+                    <span class="vdot" data-v="0"></span>
+                    <span class="vdot" data-v="1"></span>
+                    <span class="vdot" data-v="2"></span>
+                </div>
+
+                <!-- Pulsing heart overlay -->
+                <div class="video-heart-overlay">❤️</div>
+            </div>
+
+            <!-- Between-video transition card -->
+            <div id="videoTransCard" class="video-trans-card hidden">
+                <p class="trans-emoji" id="transEmoji">💕</p>
+                <p class="trans-text"  id="transText">Next memory loading...</p>
+            </div>
+
+        </section>
+
+        <!-- ══════════════ SLIDE 6: Birthday Wish / Cake ══════════════ -->
+        <section id="slide-6" class="slide">
+            <div class="glass-card">
+                <div class="slide-content">
+                    <div class="dreamy-photo-wrapper compact-photo">
+                        <img src="/photo5.jpg" alt="Make A Wish" class="dreamy-photo polaroid-frame float-anim">
+                    </div>
+                    <h2 class="romantic-title">Make a Wish 🎂✨</h2>
+                    <p class="subtitle">Blow out the candles & type your secret wish...</p>
+                    <div class="cake-container" id="cakeContainer">
+                        <div class="cake">
+                            <div class="plate"></div>
+                            <div class="layer layer-bottom"></div>
+                            <div class="layer layer-middle"></div>
+                            <div class="layer layer-top"></div>
+                            <div class="icing"></div>
+                            <div class="drips"><span></span><span></span><span></span><span></span><span></span></div>
+                            <div class="candles">
+                                <div class="candle"><div class="flame" id="flame1"></div></div>
+                                <div class="candle"><div class="flame" id="flame2"></div></div>
+                                <div class="candle"><div class="flame" id="flame3"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="candleInstruction" class="candle-instruction">
+                        <button id="blowCandleBtn" class="blow-btn">💨 Tap to Blow Candles</button>
+                    </div>
+                    <div class="wish-box-wrapper" id="wishBoxWrapper">
+                        <textarea id="wishInput" placeholder="Write your secret birthday wish here... ✨" rows="3"></textarea>
+                        <button id="btnReleaseWish" class="glow-btn wish-btn">
+                            <span>Send Wish to the Stars 🌌✨</span>
+                        </button>
+                    </div>
+                    <div class="btn-wrapper mt-20 hidden" id="slide6NextWrapper">
+                        <button id="btn-slide-6" class="glow-btn">
+                            <span>See Final Message ❤️</span>
+                            <svg class="arrow-icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══════════════ SLIDE 7: Final Call Card ══════════════ -->
+        <section id="slide-7" class="slide">
+            <div class="glass-card slide-7-card">
+                <div class="slide-content">
+                    <div class="dreamy-photo-wrapper">
+                        <img src="/photo1.jpg" alt="Always & Forever" class="dreamy-photo hero-photo float-anim">
+                        <span class="photo-heart-badge">👑❤️</span>
+                    </div>
+                    <h2 class="romantic-title">Always & Forever Yours</h2>
+                    <p class="final-subtext">No matter where we are, I am always right here for you.</p>
+                    <div class="phone-display-card">
+                        <span class="phone-label">Direct Line To My Heart</span>
+                        <a href="tel:+918708400280" class="phone-number">+91 87084 00280</a>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="tel:+918708400280" class="glow-btn call-action-btn">
+                            <svg class="action-icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <span>Call Me Now 📞</span>
+                        </a>
+                        <a href="https://wa.me/918708400280?text=I%20loved%20the%20birthday%20surprise!%20❤️" target="_blank" rel="noopener" class="glow-btn whatsapp-action-btn">
+                            <span>💬 WhatsApp Me</span>
+                        </a>
+                    </div>
+                    <p class="call-me-text">call me to know how much i love you</p>
+                    <button id="btnRestart" class="text-btn restart-btn">🔄 Replay Birthday Experience</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
